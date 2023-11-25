@@ -3,39 +3,39 @@ import { Link } from "react-router-dom";
 function Header() {
   return (
     <div>
-      <ul class="header-admin">
-        <li class="">
-          <Link class="" to="/list-user">
+      <ul className="header-admin">
+        <li className="">
+          <Link className="" to="/">
             LIST USER
           </Link>
         </li>
-        <li class="">
-          <Link class=""  to="/list-product">
+        <li className="">
+          <Link className=""  to="/list-product">
             LIST PRODUCT
           </Link>
         </li>
-        <li class="">
-          <Link class=""  to="/list-category">
+        <li className="">
+          <Link className=""  to="/list-category">
             LIST CATEGORY
           </Link>
         </li>
-        <li class="">
-          <Link class="" to="/insert-new-user">
+        <li className="">
+          <Link className="" to="/insert-new-user">
             ADD NEW USER
           </Link>
         </li>
-        <li class="">
-          <Link class=""  to="/insert-product">
+        <li className="">
+          <Link className=""  to="/insert-product">
             ADD NEW PRODUCT
           </Link>
         </li>
-        <li class="">
-          <Link class="" to="/insert-category">
+        <li className="">
+          <Link className="" to="/insert-category">
             ADD NEW CATEGORY
           </Link>
         </li>
-        <li class="">
-          <Link class=""  to="/logout">
+        <li className="">
+          <Link className=""  to="/logout">
             LOGOUT
           </Link>
         </li>

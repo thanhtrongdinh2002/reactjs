@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DefautLayout from "./layouts/DefautLayout";
+import ListUser from "./pages/list-user";
+import ListProduct from "./pages/list-product";
+import ListCategory from "./pages/list-catagory";
 
-function App() {
+const ListRouter = [
+  {
+    path: "/list-user",
+    component: ListUser,
+  },
+  {
+    path: "/list-product",
+    component: ListProduct,
+  },
+  {
+    path: "/list-category",
+    component: ListCategory,
+  }
+];
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        {ListRouter.map((router, index) => {
+         const Page = router.component
+          return (
+            <Route
+              path={router.path}
+              element={
+                <DefautLayout>
+                  <Page />
+                </DefautLayout>
+              }
+            />
+          );
+        })}
+      </Routes>
+    </Router>
   );
 }
-
-export default App;

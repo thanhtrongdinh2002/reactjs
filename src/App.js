@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DefautLayout from "./layouts/DefautLayout";
 import ListUser from "./pages/list-user";
@@ -13,6 +13,7 @@ import DetailProduct from "./pages/detail-product";
 import EditProduct from "./pages/edit-product";
 import EditCategory from "./pages/edit-category";
 import EditUser from "./pages/edit-user";
+import Home from "./pages/home";
 
 const ListRouter = [
   {
@@ -22,6 +23,7 @@ const ListRouter = [
   {
     path: "/list-product",
     component: ListProduct,
+    layout: null,
   },
   {
     path: "/list-category",
@@ -39,6 +41,11 @@ const ListRouter = [
     path: "/insert-category",
     component: NewCategory,
   },
+  {
+    path: "/home",
+    component: Home,
+    layout: null,
+  },
 ];
 export default function App() {
   return (
@@ -46,14 +53,18 @@ export default function App() {
       <Routes>
         {ListRouter.map((router, index) => {
           const Page = router.component;
+          let Layout = DefautLayout;
+          if (router.layout === null) {
+            Layout = Fragment;
+          }
           return (
             <Route
               key={index}
               path={router.path}
               element={
-                <DefautLayout>
+                <Layout>
                   <Page />
-                </DefautLayout>
+                </Layout>
               }
             />
           );

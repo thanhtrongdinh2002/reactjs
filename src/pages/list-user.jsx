@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 function ListUser() {
-  const [ListUser, setListUser] = useState();
+  const [ListUser, setListUser] = useState([]);
   useEffect(() => {
-    axios.get("http://localhost:8080/api/list-user")
+    axios
+      .get("http://localhost:8080/api/list-user")
       .then(function (response) {
         // handle success
         setListUser(response.data.data);
@@ -13,7 +14,7 @@ function ListUser() {
         console.log(error);
       });
   }, []);
-  console.log(ListUser)
+  console.log(ListUser);
   return (
     <table className="table">
       <thead>
@@ -31,12 +32,12 @@ function ListUser() {
       <tbody>
         {ListUser.map((user, index) => {
           return (
-            <tr>
+            <tr key={index}>
               <td>{user.username}</td>
-              <td>dinh thanh trong</td>
-              <td>can tho</td>
-              <td>Nam</td>
-              <td>dttrong@gmail.com</td>
+              <td>{user.fullname}</td>
+              <td>{user.address}</td>
+              <td>{user.sex==1?"Nam":"Nữ"}</td>
+              <td>{user.email}</td>
 
               <td>
                 <a href="/detail-user/<%= users[i].username %>">chi tiet</a>

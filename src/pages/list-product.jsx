@@ -1,7 +1,57 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 function ListProduct() {
-    return ( 
-        <h1>Danh sách sản phẩm</h1>
-     );
+  const [ListUser, setListUser] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/list-product")
+      .then(function (response) {
+        // handle success
+        setListUser(response.data.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }, []);
+  console.log(ListUser);
+  return (
+    <table className="table">
+      <thead>
+        <tr>
+          <th scope="col">STT</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Product Price</th>
+          <th scope="col">Product Type</th>
+          <th scope="col">Detail</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {ListUser.map((user, index) => {
+          return (
+            <tr key={index}>
+              <td>{user.tensp}</td>
+              <td>{user.giasp}</td>
+              <td>{user.hinhanh}</td>
+              <td>{user.chitietsp}</td>
+
+              <td>
+                <a href="/detail-user/<%= users[i].username %>">chi tiet</a>
+              </td>
+              <td>
+                <a href="/edit-user/<%= users[i].username %>">Sua</a>
+              </td>
+              <td>
+                <a href="/delete-user/<%= users[i].username %>">Xoa</a>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
 }
 
 export default ListProduct;

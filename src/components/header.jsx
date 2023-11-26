@@ -20,12 +20,12 @@ function Header() {
           </Link>
         </li>
         <li className="">
-          <Link className="" to="/insert-new-user">
+          <Link className="" to="/create-user">
             ADD NEW USER
           </Link>
         </li>
         <li className="">
-          <Link className=""  to="/insert-product">
+          <Link className=""  to="/create-product">
             ADD NEW PRODUCT
           </Link>
         </li>

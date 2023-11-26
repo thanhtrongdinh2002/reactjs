@@ -23,18 +23,17 @@ const ListRouter = [
   {
     path: "/list-product",
     component: ListProduct,
-    layout: null,
   },
   {
     path: "/list-category",
     component: ListCategory,
   },
   {
-    path: "/insert-new-user",
+    path: "/create-user",
     component: NewUser,
   },
   {
-    path: "/insert-product",
+    path: "/create-product",
     component: NewProduct,
   },
   {
@@ -46,6 +45,7 @@ const ListRouter = [
     component: Home,
     layout: null,
   },
+  
 ];
 export default function App() {
   return (

@@ -14,7 +14,6 @@ function ListUser() {
         console.log(error);
       });
   }, []);
-  console.log(ListUser);
   return (
     <table className="table">
       <thead>
@@ -40,13 +39,13 @@ function ListUser() {
               <td>{user.email}</td>
 
               <td>
-                <a href="/detail-user/<%= users[i].username %>">chi tiet</a>
+                <a href="/api/detail-user">chi tiet</a>
               </td>
               <td>
-                <a href="/edit-user/<%= users[i].username %>">Sua</a>
+                <a href="/api/edit-user/<%= users[i].username %>">Sua</a>
               </td>
               <td>
-                <a href="/delete-user/<%= users[i].username %>">Xoa</a>
+                <a href="/api/delete-user/<%= users[i].username %>">Xoa</a>
               </td>
             </tr>
           );

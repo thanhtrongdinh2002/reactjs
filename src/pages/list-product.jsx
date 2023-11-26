@@ -1,20 +1,19 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 function ListProduct() {
-  const [ListUser, setListUser] = useState([]);
+  const [ListProduct, setListProduct] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/list-product")
       .then(function (response) {
         // handle success
-        setListUser(response.data.data);
+        setListProduct(response.data.data);
       })
       .catch(function (error) {
         // handle error
         console.log(error);
       });
   }, []);
-  console.log(ListUser);
   return (
     <table className="table">
       <thead>
@@ -29,7 +28,7 @@ function ListProduct() {
         </tr>
       </thead>
       <tbody>
-        {ListUser.map((user, index) => {
+        {ListProduct.map((user, index) => {
           return (
             <tr key={index}>
               <td>{user.tensp}</td>

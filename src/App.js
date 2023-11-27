@@ -11,6 +11,8 @@ import EditProduct from "./pages/update-product";
 import EditCategory from "./pages/update-category";
 import EditUser from "./pages/update-user";
 import Home from "./pages/home";
+import Menu from "./pages/home";
+import Product from "./pages/product";
 
 const ListRouter = [
   {
@@ -54,10 +56,15 @@ const ListRouter = [
   },
   {
     path: "/home",
-    component: Home,
+    component: Menu,
     layout: null,
   },
-  
+  {
+    path: "/product",
+    component: Product,
+    layout: null,
+  },
+
 ];
 export default function App() {
   return (
@@ -70,17 +77,33 @@ export default function App() {
             Layout = Fragment;
           }
           return (
-            <Route
-              key={index}
-              path={router.path}
-              element={
-                <Layout>
-                  <Page />
-                </Layout>
-              }
-            />
+            <>
+              <Route
+                key={index}
+                path={router.path}
+                element={
+                  <Layout>
+                    <Page />
+                  </Layout>
+
+                }
+              />
+              
+            </>
           );
         })}
+        <Route path="/product" element={<Product />}>
+                <Route
+                  path=""
+                  element={<Product />}
+                />
+              </Route>
+              <Route path="/home" element={<Menu />}>
+                <Route
+                  path=":id"
+                  element={<Product />}
+                />
+              </Route>
       </Routes>
     </Router>
   );

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-function NewUser() {
-  const [username, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+function EditUser() {
+  const { username } = useParams();
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [sex, setSex] = useState("");
@@ -12,16 +12,13 @@ function NewUser() {
 
     // Tạo một object chứa thông tin người dùng
     const newUser = {
-      username: username,
-      password: password,
       fullname: fullname,
       address: address,
       sex: sex,
       email: email,
     };
-    console.log(newUser);
     // Gửi yêu cầu POST đến API để thêm người dùng
-    fetch("http://localhost:8080/api/create-user", {
+    fetch(`http://localhost:8080/api/update-user/${username}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -41,28 +38,6 @@ function NewUser() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">
-          User Name
-        </label>
-        <input
-          type="text"
-          onChange={(e) => {
-            setUserName(e.target.value);
-          }}
-        />
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">
-          Password
-        </label>
-        <input
-          type="password"
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
-        />
-      </div>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
           Full Name
@@ -85,20 +60,16 @@ function NewUser() {
           }}
         />
       </div>
-      <div className="form-group">
-        <label htmlFor="sex">Sex</label>
-        <select
-          id="sex"
-          className="form-control"
-          value={sex}
-          onChange={(e) => {
-            setSex(e.target.value);
-          }}
-        >
-          <option value="1">Nam</option>
-          <option value="2">Nữ</option>
-        </select>
-      </div>
+      <label>Sex</label>
+      <select
+        onChange={(e) => {
+          setSex(e.target.value);
+        }}
+      >
+        <option selected>Chọn</option>
+        <option value="1">Nam</option>
+        <option value="0">Nữ</option>
+      </select>
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">
           Address
@@ -116,4 +87,4 @@ function NewUser() {
   );
 }
 
-export default NewUser;
+export default EditUser;

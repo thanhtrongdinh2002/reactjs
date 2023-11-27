@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import FormData from "form-data";
+import { useParams } from "react-router-dom";
 
-function NewProduct() {
+function EditProduct() {
+  const { idsp } = useParams();
   const [tensp, setTensp] = useState("");
   const [giasp, setGiasp] = useState("");
   const [chitietsp, setChitietsp] = useState("");
@@ -35,7 +37,7 @@ function NewProduct() {
 
     // Gửi yêu cầu POST đến API để thêm sản phẩm
     axios
-      .post("http://localhost:8080/api/create-product", formData, {
+      .post(`http://localhost:8080/api/update-product/${idsp}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -51,7 +53,7 @@ function NewProduct() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="new">
+    <form onSubmit={handleSubmit}>
       <div>
         <label>Tên sản phẩm</label>
         <input
@@ -79,19 +81,6 @@ function NewProduct() {
           }}
         />
       </div>
-      <label htmlFor="sex">Danh mục</label>
-      <select
-        value={iddanhmuc}
-        onChange={(e) => {
-          setIddanhmuc(e.target.value);
-        }}
-      > 
-        {ListCategory.map((item) => (
-          <option key={item.iddanhmuc} value={item.iddanhmuc}>
-            {item.tendanhmuc}
-          </option>
-        ))}
-      </select>
       <div>
         <label>Hình ảnh</label>
         <input
@@ -102,9 +91,22 @@ function NewProduct() {
           }}
         />
       </div>
+      <div>
+        <select
+          onChange={(e) => {
+            setIddanhmuc(e.target.value);
+          }}
+        >
+          {ListCategory.map((item) => (
+            <option value={item.iddanhmuc}>
+              {item.tendanhmuc}
+            </option>
+          ))}
+        </select>
+      </div>
       <button type="submit">Submit</button>
     </form>
   );
 }
 
-export default NewProduct;
+export default EditProduct;

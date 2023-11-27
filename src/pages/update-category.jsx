@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 
-function NewCategory() {
+function EditCategory() {
+    const { iddm } = useParams();
   const [tendanhmuc, setTendanhmuc] = useState("");
 
   const handleSubmit = (event) => {
@@ -13,7 +15,7 @@ function NewCategory() {
     };
 
     // Gửi yêu cầu POST đến API để thêm người dùng
-    fetch("http://localhost:8080/api/create-category", {
+    fetch(`http://localhost:8080/api/update-category/${iddm}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,4 +50,4 @@ function NewCategory() {
   );
 }
 
-export default NewCategory;
+export default EditCategory;

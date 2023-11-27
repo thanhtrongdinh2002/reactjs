@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <div>
+    <div className="Header">
       <ul className="header-admin">
         <li className="">
           <Link className="" to="/">

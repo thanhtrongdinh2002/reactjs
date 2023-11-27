@@ -7,12 +7,9 @@ import ListCategory from "./pages/list-catagory";
 import NewUser from "./pages/new-user";
 import NewProduct from "./pages/new-product";
 import NewCategory from "./pages/new-category";
-import DetailCategory from "./pages/detail-category";
-import DetailUser from "./pages/detail-user";
-import DetailProduct from "./pages/detail-product";
-import EditProduct from "./pages/edit-product";
-import EditCategory from "./pages/edit-category";
-import EditUser from "./pages/edit-user";
+import EditProduct from "./pages/update-product";
+import EditCategory from "./pages/update-category";
+import EditUser from "./pages/update-user";
 import Home from "./pages/home";
 
 const ListRouter = [
@@ -39,6 +36,21 @@ const ListRouter = [
   {
     path: "/insert-category",
     component: NewCategory,
+  },
+  {
+    path: "/update-user/:username",
+    component: EditUser,
+    layout: null,
+  },
+  {
+    path: "/update-product/:idsp",
+    component: EditProduct,
+    layout: null,
+  },
+  {
+    path: "/update-category/:iddm",
+    component: EditCategory,
+    layout: null,
   },
   {
     path: "/home",

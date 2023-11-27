@@ -22,10 +22,10 @@ function Product() {
         {ListProduct.map((idsp, index) => {
           return (
             <ul key={index} style={{display:"inline-block"}}>
-              <li style={{listStyle:"none", padding:"5px", margin: "2px", backgroundColor: "grey", height: "100px", width: "100px"}}><Link style={{textDecoration:"none", color:"black"}}>
-                <li style={{paddingTop: "15px", paddingLeft: "10px"}}>{idsp.tensp}</li>
-                <li style={{paddingLeft: "10px"}}>{idsp.giasp}</li>
-                <li style={{paddingLeft: "10px"}}>{idsp.chitietsp}</li>
+              <li style={{listStyle:"none", height: "200px", width: "200px", }}><Link style={{textDecoration:"none", color:"black"}}>
+                < >{idsp.tensp}</><br/>
+                < >{idsp.giasp}</><br/>
+                < >{idsp.chitietsp}</><br/>
                 </Link></li>
             </ul>
           )

@@ -13,6 +13,7 @@ import EditUser from "./pages/update-user";
 import Home from "./pages/home";
 import Menu from "./pages/home";
 import Product from "./pages/product";
+import LoginPage from "./pages/login";
 
 const ListRouter = [
   {
@@ -57,6 +58,11 @@ const ListRouter = [
   {
     path: "/home",
     component: Menu,
+    layout: null,
+  },
+  {
+    path: "/login",
+    component: LoginPage,
     layout: null,
   },
   {
